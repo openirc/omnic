@@ -102,7 +102,7 @@ func (c *WSClient) readPump() {
         _, message, err := c.conn.ReadMessage()
         if err != nil {
             if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway) {
-                log.Printf("error: %v", err)
+                log.Printf("[%s]: read error: %v", c.ip, err)
             }
             break
         }
