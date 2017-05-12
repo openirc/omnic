@@ -163,11 +163,7 @@ func (irc_server *IRCServer) connect() {
         irc_server.setConnectionState(Connecting)
         conn, err := net.Dial("tcp", hostname)
 
-        if err != nil {
-            irc_server.conn = nil
-            irc_server.logError(fmt.Sprintf("Unable to connect: %v", err))
-            return
-        } else {
+        if err == nil {
             irc_server.conn = conn
             irc_server.reader = bufio.NewReader(irc_server.conn)
 
@@ -176,6 +172,10 @@ func (irc_server *IRCServer) connect() {
             go irc_server.IRCServerWritePump()
             irc_server.sendq <- []byte("USER omnic omnic omnic :OpenIRC Project\n")
             irc_server.sendq <- []byte("NICK omnic\n")
+        } else {
+            irc_server.conn = nil
+            irc_server.logError(fmt.Sprintf("Unable to connect: %v", err))
+            return
         }
 
         // IRC Socket loop
