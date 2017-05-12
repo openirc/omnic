@@ -41,8 +41,8 @@ type IRCd struct {
     param_modes_when_set []byte     // "l"
     plain_modes []byte              // "pstnmi"
     supports_whox bool              // If we support WHOX, cache this
-    usermode_help *modeHelpMap  // Help list of user modes
-    chanmode_help *modeHelpMap  // Help list of channel modes
+    usermode_help *modeHelpMap      // Help list of user modes
+    chanmode_help *modeHelpMap      // Help list of channel modes
     ircd_interface string           // What data we're pulling from
 }
 
