@@ -8,12 +8,12 @@ import (
     "fmt"
 
     "database/sql"
+    "github.com/spf13/viper"
     _ "github.com/lib/pq"
 )
 
-// TODO(static): Configize this
 func get_sql() *sql.DB {
-    db, err := sql.Open("postgres", "dbname=openirc")
+    db, err := sql.Open("postgres", viper.GetString("psql.connectstring"))
 
     if err != nil {
         fmt.Println("Postgres error:", err)

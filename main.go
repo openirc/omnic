@@ -9,6 +9,8 @@ import (
     "fmt"
     "flag"
     "net/http"
+
+    "github.com/spf13/viper"
 )
 
 type Profile struct {
@@ -18,8 +20,11 @@ type Profile struct {
 
 
 func main() {
-    // TODO(static): Config
-    addr := flag.String("addr", ":8080", "http service address")
+    read_config()
+    httpd_bind_ip := viper.GetString("httpd.bindip") + ":" + viper.GetString("httpd.bindport")
+
+    logDebug("Listening on " + httpd_bind_ip)
+    addr := flag.String("addr", httpd_bind_ip, "http service address")
 
     flag.Parse()
     hub := newWSHub()

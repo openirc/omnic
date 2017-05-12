@@ -1,0 +1,6 @@
+httpd:
+  bindip: 0.0.0.0
+  bindport: 8080
+
+psql:
+  connectstring: db=openirc
