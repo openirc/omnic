@@ -18,7 +18,6 @@ type Profile struct {
     Css string
 }
 
-
 func main() {
     read_config()
     httpd_bind_ip := viper.GetString("httpd.bindip") + ":" + viper.GetString("httpd.bindport")

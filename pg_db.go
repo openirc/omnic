@@ -29,7 +29,7 @@ func validate_auth(token string) int64 {
         return -1
     }
 
-    rows, err := db.Query("SELECT user_id FROM auth_tokens WHERE token $1", token)
+    rows, err := db.Query("SELECT user_id FROM auth_tokens WHERE token = $1", token)
 
     if err != nil {
         fmt.Println("Failed to query:", err)
