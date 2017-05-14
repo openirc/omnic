@@ -55,5 +55,4 @@ func validate_auth(token string) int64 {
     }
 
     return ids[0]
-
 }
