@@ -3,4 +3,4 @@ httpd:
   bindport: 8080
 
 psql:
-  connectstring: db=openirc
+  connectstring: database=openirc sslmode=disable
