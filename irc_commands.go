@@ -53,7 +53,7 @@ func irc_serv_cmd_ping(irc_server *IRCServer, message string) {
 }
 
 func irc_serv_cmd_rpl_welcome(irc_server *IRCServer, message string) {
-    irc_server.setConnectionState(Disconnected)
+    irc_server.setConnectionState(Connected)
     slices := strings.Split(message, " ")
     if len(slices) < 3 {
         log.Printf("Error: Unable to determine nick")
