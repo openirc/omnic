@@ -40,6 +40,7 @@ func irc_serv_cmd_error(irc_server *IRCServer, message string) {
 }
 
 func irc_serv_cmd_ping(irc_server *IRCServer, message string) {
+    irc_server.setConnectionState(Disconnected)
     slices := strings.Split(message, " ")
     if len(slices) < 2 {
         log.Printf("Got invalid PING command from server")
